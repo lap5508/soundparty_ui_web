@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ConfigService} from './config.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SoundpartyWebUI';
+  sessionName;
+
+  constructor(private configService: ConfigService) {}
+
+  putItem(sessionName: string): void {
+    this.sessionName = sessionName;
+    this.configService.request(sessionName);
+  }
 }
